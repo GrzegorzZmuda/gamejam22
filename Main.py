@@ -66,7 +66,12 @@ class ball:
         b=b+0.1
 
         c=math.sqrt(a*a+b*b)
-        self.spd=c
+        if self.spd>0:
+            self.spd=c
+        else:
+            self.spd=-c
+        print(self.spd)
+
         self.dir=270-math.atan(a/b)*360/(2*3.14)
 
 
@@ -85,8 +90,7 @@ class ball:
         self.x+=self.spd*math.sin(math.radians(self.dir+270))
         self.y+=self.spd*math.sin(math.radians(self.dir+180))
         self.grav()
-        print(self.spd)
-        print(self.dir)
+
 
 
     def coltest(self, sprite):
@@ -138,4 +142,4 @@ while Running:
             pygame.quit()
             exit()
     pygame.display.flip()
-    time.sleep(1)
+    time.sleep(0.1)
